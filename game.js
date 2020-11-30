@@ -9,19 +9,24 @@ $(".gamebtn").click(function(){
 function nextSequence() {
     var randomNumber = Math.floor(Math.random() * 4);
     var randomChosenColor = buttonColors[randomNumber];
-    selectionEffects(randomChosenColor);
+    selectionEffect(randomChosenColor);
+    playSound(randomChosenColor);
     gamePattern.push(randomChosenColor);
 }
 
 function selectionHandler(selection) {
   var userChosenColor = selection;
   console.log(userChosenColor);
-  selectionEffects(userChosenColor);
+  selectionEffect(userChosenColor);
+  playSound(userChosenColor);
   userClickPattern.push(userChosenColor);
 }
 
-function selectionEffects(color) {
+function selectionEffect(color) {
   $("#"+color).fadeOut(100).fadeIn(100);
-  var audio = new Audio("sounds/"+color+".mp3");
+}
+
+function playSound(name){
+  var audio = new Audio("sounds/"+name+".mp3");
   audio.play();
 }
