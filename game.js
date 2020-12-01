@@ -17,7 +17,7 @@ function nextSequence() {
 function selectionHandler(selection) {
   var userChosenColor = selection;
   console.log(userChosenColor);
-  selectionEffect(userChosenColor);
+  animatePress(userChosenColor);
   playSound(userChosenColor);
   userClickPattern.push(userChosenColor);
 }
@@ -29,4 +29,10 @@ function selectionEffect(color) {
 function playSound(name){
   var audio = new Audio("sounds/"+name+".mp3");
   audio.play();
+}
+
+function animatePress(currentColor) {
+  $("#"+currentColor).addClass("pressed");
+  selectionEffect(currentColor);
+  setTimeout(function(){$("#"+currentColor).removeClass("pressed");}, 100);
 }
